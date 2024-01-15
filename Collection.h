@@ -11,7 +11,15 @@ private:
     std::vector<Document> documents;
 public:
     Collection(const std::string& name): name(name){};
-    ~Collection(){};
+    ~Collection(){
+        for (auto& document: documents){
+            for (auto& field:document.getFields()){
+                if(field.meta.type == FieldType::DOCUMENT){
+                    delete field.value.embeddedDocVal;
+                }
+            }
+        }
+    };
     void setSchema(const std::vector<FieldMetaData>& schema);
     void addDocument(const Document& document);
     void serialize(const std::string& filename) const;

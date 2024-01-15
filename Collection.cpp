@@ -33,29 +33,9 @@ void Collection::printDocuments() const
     std::cout << std::setw(52) << std::setfill('-') << "" << std::endl;
     for (auto &document : documents)
     {
-        std::cout << std::setw(52) << std::setfill('-') << "" << std::setfill(' ') << std::endl;
-        std::cout << std::setw(25) << "Field Name" << '|' << std::setw(25) << "Field Value" << '|' << std::endl;
-        std::cout << std::setw(52) << std::setfill('-') << "" << std::setfill(' ') << std::endl;
-        for (auto &field : document.getFields())
-        {
-            std::cout << std::setw(25) << field.meta.name << '|' << std::setw(25);
-            switch (field.meta.type)
-            {
-            case FieldType::INT:
-                std::cout << field.value.intVal;
-                break;
-            case FieldType::DOUBLE:
-                std::cout << field.value.doubleVal;
-                break;
-            case FieldType::STRING:
-                std::cout << field.value.stringVal;
-                break;
-            default:
-                break;
-            }
-            std::cout << '|' << std::endl;
-        }
-        std::cout << std::setw(52) << std::setfill('-') << "" << std::setfill(' ') << std::endl;
+        std::cout << std::setw(52) << std::setfill('-') << "" << std::endl;
+        document.print();
+        std::cout << std::setw(52) << std::setfill('-') << "" << std::endl;
     }
 }
 
