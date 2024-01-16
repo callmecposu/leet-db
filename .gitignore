@@ -3,3 +3,4 @@ test
 test.dSYM
 example.cpp
 collections
+.DS_Store
